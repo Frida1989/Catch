@@ -1,23 +1,14 @@
-import NoteDetails from "./NoteDetails.jsx";
+import { Link } from "react-router-dom";
 
-function NoteList({
-  notes,
-  deleteNote,
-  completeNote,
-  category,
-  wishMonthDate,
-}) {
+function NoteList({ notes }) {
   return (
-    <ul>
-      {notes.map((note, index) => (
-        <NoteDetails
-          note={note}
-          index={index}
-          deleteNote={deleteNote}
-          completeNote={completeNote}
-          wishMonthDate={wishMonthDate}
-          category={category}
-        />
+    <ul className="note-list">
+      {notes.map((note) => (
+        <li key={note.id}>
+          <Link to={`/notes/${note.id}`} className="note-card">
+            {note.title}
+          </Link>
+        </li>
       ))}
     </ul>
   );

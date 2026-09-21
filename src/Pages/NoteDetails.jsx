@@ -1,52 +1,83 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-function NoteDetails({ notes, index, deleteNote, completeNote }) {
+function NoteDetails({ notes, deleteNote }) {
   const { noteId } = useParams();
+  const navigate = useNavigate();
+
   const note = notes.find((note) => note.id === Number(noteId));
 
   if (!note) {
     return (
-      <div>
-        <p>Not founded with this ID</p>
+      <div className="note-not-found">
+        <h2>Note not found</h2>
 
         <Link to="/" className="back-link">
-          ← Back
+          ← Back to notes
         </Link>
       </div>
     );
   }
+
+  const formattedDate = new Date(note.createdAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+
+  function handleDelete() {
+    deleteNote(note.id);
+    navigate("/");
+  }
+
   return (
-    <li className="note-item">
-      <input
-        type="checkbox"
-        checked={note.completed}
-        onChange={() => completeNote(index)}
-      />
+    <article className="note-details">
+      <Link to="/" className="back-link">
+        ← Back to notes
+      </Link>
 
-      <div className="note-content">
-        <h2 className={note.completed ? "completed" : "not-completed"}>
-          {note.title}
-        </h2>
-
-        {!note.completed && <p>{note.description}</p>}
+      <div className="note-meta">
+        <span className="note-category">{note.category}</span>
+        <span className="note-target">{note.targetPeriod} focus</span>
       </div>
 
-      <div className="detail-copy">
-        <p className="eyebrow">What we catch now</p>
+      <h1>{note.title}</h1>
 
-        <h2>{note.title}</h2>
+      <p className="note-description">{note.description}</p>
 
-        <p className="meta">
-          {note.wishMonthDate} · {note.category}
-        </p>
+      <section className="progress-section">
+        <div className="progress-header">
+          <h2>Progress</h2>
+          <span>{note.progress}%</span>
+        </div>
 
-        <p className="description">{note.description}</p>
-        <button onClick={() => deleteNote(index)}>X</button>
-        <Link to="/" className="back-link">
-          ← Back
-        </Link>
+        <progress value={note.progress} max="100">
+          {note.progress}%
+        </progress>
+      </section>
+
+      <section className="note-timeline">
+        <h2>Timeline</h2>
+
+        <div>
+          <span>Created</span>
+          <p>{formattedDate}</p>
+        </div>
+
+        <div>
+          <span>Target</span>
+          <p>{note.targetPeriod}</p>
+        </div>
+      </section>
+
+      <div className="note-actions">
+        <button type="button">Edit</button>
+
+        <button type="button" onClick={handleDelete}>
+          Delete
+        </button>
       </div>
-    </li>
+    </article>
   );
 }
+
 export default NoteDetails;
