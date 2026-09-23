@@ -13,6 +13,7 @@ import NotFound from "./pages/NotFound.jsx";
 function App() {
   const [notes, setNotes] = useState(Notes);
 
+  // Add a new note
   function addNote(title, description, category, targetPeriod) {
     const newNote = {
       id: Date.now(),
@@ -27,8 +28,27 @@ function App() {
     setNotes([...notes, newNote]);
   }
 
+  // Delete a note by id
   function deleteNote(noteId) {
-    setNotes(notes.filter((note, i) => i !== noteId));
+    const newNotes = notes.filter((note) => note.id !== noteId);
+
+    setNotes(newNotes);
+  }
+
+  // Update a note by id
+  function editNote(noteId, updatedData) {
+    const updatedNotes = notes.map((note) => {
+      if (note.id === noteId) {
+        return {
+          ...note,
+          ...updatedData,
+        };
+      }
+
+      return note;
+    });
+
+    setNotes(updatedNotes);
   }
 
   return (
@@ -40,7 +60,13 @@ function App() {
 
         <Route
           path="/notes/:noteId"
-          element={<NoteDetails notes={notes} deleteNote={deleteNote} />}
+          element={
+            <NoteDetails
+              notes={notes}
+              deleteNote={deleteNote}
+              editNote={editNote}
+            />
+          }
         />
 
         <Route path="*" element={<NotFound />} />
