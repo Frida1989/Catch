@@ -1,5 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import ProgressRing from "../Components/ProgressRing";
 
 function NoteDetails({ notes, deleteNote, editNote }) {
   const { noteId } = useParams();
@@ -279,16 +280,9 @@ function NoteDetails({ notes, deleteNote, editNote }) {
             <section className="progress-section">
               <div className="progress-header">
                 <h2>Progress</h2>
-                <span className="progress-value">{note.progress}%</span>
               </div>
 
-              <progress
-                className="progress-bar"
-                value={note.progress}
-                max="100"
-              >
-                {note.progress}%
-              </progress>
+              <ProgressRing value={note.progress} />
             </section>
 
             <section className="note-timeline">
