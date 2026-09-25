@@ -100,10 +100,6 @@
 
 .hero-content {
   width: min(100%, 1200px);
-
-  margin: 120px auto 0;
-
-  padding: 40px 0;
 }
 
 .hero-eyebrow {
@@ -262,7 +258,7 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 999px;
 
-  background: transparent;
+  background: #252525;
   color: #9a9a9a;
 
   font-size: 0.85rem;
@@ -1487,4 +1483,25 @@
 .note-details .progress-ring-value {
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.required-star {
+  color: #ff5a5a;
+  margin-left: 3px;
+}
+
+.title-error {
+  margin: 7px 0 0;
+  color: #ff5a5a;
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.form-input.input-error {
+  border-color: #ff5a5a;
+}
+
+.form-input.input-error:focus {
+  border-color: #ff5a5a;
+  outline: none;
 }

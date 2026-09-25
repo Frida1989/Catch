@@ -61,17 +61,17 @@ function Home({ notes, addNote }) {
             type="button"
             onClick={() => setShowForm(true)}
           >
-            + Add a new catch
+            + Add note
           </button>
         </div>
       </section>
-
       <section className="explore-section">
         <div className="search-container">
           <input
             className="search-input"
             type="text"
-            placeholder="Search your catches..."
+            aria-label="Search notes"
+            placeholder="Search your notes..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -98,6 +98,7 @@ function Home({ notes, addNote }) {
                 : "category-button"
             }
             onClick={() => setSelectedCategory("Study")}
+            aria-pressed={selectedCategory === "Study"}
           >
             Study
           </button>
@@ -110,6 +111,7 @@ function Home({ notes, addNote }) {
                 : "category-button"
             }
             onClick={() => setSelectedCategory("Work")}
+            aria-pressed={selectedCategory === "Work"}
           >
             Work
           </button>
@@ -122,6 +124,7 @@ function Home({ notes, addNote }) {
                 : "category-button"
             }
             onClick={() => setSelectedCategory("YouTube")}
+            aria-pressed={selectedCategory === "YouTube"}
           >
             YouTube
           </button>
@@ -146,6 +149,7 @@ function Home({ notes, addNote }) {
                 : "category-button"
             }
             onClick={() => setSelectedCategory("Private")}
+            aria-pressed={selectedCategory === "Private"}
           >
             Private
           </button>
@@ -158,6 +162,7 @@ function Home({ notes, addNote }) {
                 : "category-button"
             }
             onClick={() => setSelectedCategory("Growth")}
+            aria-pressed={selectedCategory === "Growth"}
           >
             Growth
           </button>
@@ -170,6 +175,7 @@ function Home({ notes, addNote }) {
                 : "category-button"
             }
             onClick={() => setSelectedCategory("Language")}
+            aria-pressed={selectedCategory === "Language"}
           >
             Language
           </button>
@@ -182,16 +188,16 @@ function Home({ notes, addNote }) {
                 : "category-button"
             }
             onClick={() => setSelectedCategory("Free Notes")}
+            aria-pressed={selectedCategory === "Free Notes"}
           >
             Free Notes
           </button>
         </div>
       </section>
-
       <section className="notes-section">
         <div className="notes-header">
           <div className="notes-heading">
-            <p className="section-eyebrow">Your catches</p>
+            <p className="section-eyebrow">Your notes</p>
 
             <h2 className="section-title">What you're moving forward</h2>
           </div>
@@ -204,7 +210,6 @@ function Home({ notes, addNote }) {
 
         <NoteList notes={filteredNotes} />
       </section>
-
       {showForm && (
         <section className="new-catch-wrapper">
           <NoteInput addNote={addNote} closeForm={() => setShowForm(false)} />

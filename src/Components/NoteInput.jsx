@@ -5,6 +5,7 @@ function NoteInput({ addNote, closeForm }) {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [targetPeriod, setTargetPeriod] = useState("");
+  const [error, setError] = useState("");
 
   // Clear all form fields
   function resetForm() {
@@ -12,13 +13,17 @@ function NoteInput({ addNote, closeForm }) {
     setDescription("");
     setCategory("");
     setTargetPeriod("");
+    setError("");
   }
 
   // Save a new catch
   function handleSave(e) {
     e.preventDefault();
 
+    setError("");
+
     if (!title.trim()) {
+      setError("Please enter a title.");
       return;
     }
 
@@ -50,24 +55,31 @@ function NoteInput({ addNote, closeForm }) {
 
         <form className="note-form" onSubmit={handleSave}>
           <div className="form-group">
-            <label className="form-label" htmlFor="note-title">
-              Title
-            </label>
+            <label htmlFor="edit-title">Title</label>
+
+            <input id="edit-title" />
 
             <input
               id="note-title"
-              className="form-input"
+              className={error ? "form-input input-error" : "form-input"}
               type="text"
               value={title}
               placeholder="What's on your mind?"
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={(e) => {
+                setTitle(e.target.value);
+                setError("");
+              }}
+              aria-required="true"
+              aria-invalid={error ? "true" : "false"}
             />
+
+            {error && <p className="title-error">{error}</p>}
           </div>
 
           <div className="form-group">
-            <label className="form-label" htmlFor="note-description">
-              Description
-            </label>
+            <label htmlFor="edit-description">Description</label>
+
+            <input id="edit-description" />
 
             <textarea
               id="note-description"

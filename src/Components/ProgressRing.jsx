@@ -10,7 +10,7 @@ function ProgressRing({ value }) {
       }}
     >
       <div className="progress-ring-center">
-        <span className="progress-ring-value">{value}%</span>
+        <span className="progress-ring-value">Progress:{value}%</span>
       </div>
     </div>
   );

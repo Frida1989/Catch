@@ -72,7 +72,7 @@ function NoteDetails({ notes, deleteNote, editNote }) {
   }
 
   return (
-    <main className="note-details-page">
+    <div className="note-details-page">
       <article className="note-details">
         <div className="note-details-top">
           <Link to="/" className="back-link">
@@ -321,7 +321,7 @@ function NoteDetails({ notes, deleteNote, editNote }) {
           </>
         )}
       </article>
-    </main>
+    </div>
   );
 }
 

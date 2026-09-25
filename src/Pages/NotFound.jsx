@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="not-found">
       <div className="content-panel">
         <p className="eyebrow">404</p>
-        <h2>The page does not exist</h2>
+        <h1>The page does not exist</h1>
 
         <Link to="/" className="back-link">
           ← Back

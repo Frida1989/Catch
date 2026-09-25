@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <div className="about-page">
-      <h2>Catch your ideas</h2>
+      <h1>Catch your ideas</h1>
       <p>
         Catch is the place you ever wish to have in yor mind to organize your
         thoughts
