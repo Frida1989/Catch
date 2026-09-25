@@ -13,6 +13,7 @@ function NoteDetails({ notes, deleteNote, editNote }) {
   const [editCategory, setEditCategory] = useState("");
   const [editTargetPeriod, setEditTargetPeriod] = useState("");
   const [editProgress, setEditProgress] = useState(0);
+  const [editError, setEditError] = useState("");
 
   // Find the note from the URL id
   const note = notes.find((note) => note.id === Number(noteId));
@@ -51,10 +52,17 @@ function NoteDetails({ notes, deleteNote, editNote }) {
     setEditProgress(note.progress);
 
     setIsEditing(true);
+    setEditError("");
   }
 
   // Save the edited note
   function handleSaveEdit() {
+    // Title is required
+    if (!editTitle.trim()) {
+      setEditError("Please enter a title.");
+      return;
+    }
+
     editNote(note.id, {
       title: editTitle,
       description: editDescription,
@@ -63,11 +71,12 @@ function NoteDetails({ notes, deleteNote, editNote }) {
       progress: editProgress,
     });
 
+    setEditError("");
     setIsEditing(false);
   }
-
   // Close edit mode without saving
   function handleCancelEdit() {
+    setEditError("");
     setIsEditing(false);
   }
 
@@ -88,16 +97,25 @@ function NoteDetails({ notes, deleteNote, editNote }) {
             </div>
 
             <div className="form-group">
-              <label className="form-label">Title</label>
+              <label className="form-label" htmlFor="edit-title">
+                Title <span className="required-star">*</span>
+              </label>
 
               <input
-                className="form-input"
+                id="edit-title"
+                className={editError ? "form-input input-error" : "form-input"}
                 type="text"
                 value={editTitle}
-                onChange={(e) => setEditTitle(e.target.value)}
+                onChange={(e) => {
+                  setEditTitle(e.target.value);
+                  setEditError("");
+                }}
+                aria-required="true"
+                aria-invalid={editError ? "true" : "false"}
               />
-            </div>
 
+              {editError && <p className="title-error">{editError}</p>}
+            </div>
             <div className="form-group">
               <label className="form-label">Description</label>
 
