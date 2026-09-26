@@ -55,9 +55,9 @@ function NoteInput({ addNote, closeForm }) {
 
         <form className="note-form" onSubmit={handleSave}>
           <div className="form-group">
-            <label htmlFor="edit-title">Title</label>
-
-            <input id="edit-title" />
+            <label className="form-label" htmlFor="note-title">
+              Title <span className="required-star">*</span>
+            </label>
 
             <input
               id="note-title"
@@ -77,9 +77,9 @@ function NoteInput({ addNote, closeForm }) {
           </div>
 
           <div className="form-group">
-            <label htmlFor="edit-description">Description</label>
-
-            <input id="edit-description" />
+            <label className="form-label" htmlFor="note-description">
+              Description
+            </label>
 
             <textarea
               id="note-description"

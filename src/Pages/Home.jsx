@@ -1,12 +1,14 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import NoteList from "../Components/NoteList";
 import NoteInput from "../Components/NoteInput";
+import { useContext, useState } from "react";
+import { ThemeContext } from "../Context/ThemeContext";
 
 function Home({ notes, addNote }) {
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [showForm, setShowForm] = useState(false);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   // Show notes that match category and search
   const filteredNotes = notes.filter((note) => {
@@ -35,6 +37,28 @@ function Home({ notes, addNote }) {
         </div>
 
         <div className="hero-content">
+          <div className="theme-switcher">
+            <p className="theme-switcher-label">TOGGLE THEME</p>
+
+            <button
+              className="theme-toggle-button"
+              type="button"
+              onClick={toggleTheme}
+              aria-label={
+                theme === "dark" ? "Switch to day mode" : "Switch to night mode"
+              }
+            >
+              <span className="theme-toggle-dot" aria-hidden="true"></span>
+
+              <span>{theme === "dark" ? "Day mode" : "Night mode"}</span>
+            </button>
+
+            <p className="theme-switcher-note">
+              Your preference stays saved
+              <br />
+              across visits.
+            </p>
+          </div>
           <p className="hero-eyebrow">Your personal progress space</p>
 
           <h1 className="hero-title">
@@ -211,9 +235,14 @@ function Home({ notes, addNote }) {
         <NoteList notes={filteredNotes} />
       </section>
       {showForm && (
-        <section className="new-catch-wrapper">
-          <NoteInput addNote={addNote} closeForm={() => setShowForm(false)} />
-        </section>
+        <div className="add-note-overlay" onClick={() => setShowForm(false)}>
+          <div
+            className="add-note-popover"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <NoteInput addNote={addNote} closeForm={() => setShowForm(false)} />
+          </div>
+        </div>
       )}
     </div>
   );
