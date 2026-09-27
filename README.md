@@ -30,4 +30,18 @@ Instead of focusing only on completed or incomplete tasks, Catch lets users trac
 ## Run locally
 
 Install dependencies:
+
+```bash
+npm install
+
+Run the project with Vercel:
 npx vercel dev
+Live Demo
+
+##View Catch live:https://catch-virid.vercel.app/
+
+
+
+
+
+
