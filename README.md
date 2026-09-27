@@ -1,19 +1,33 @@
-# React + Vite
+# Catch
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Catch is a progress-focused personal workspace for people managing multiple parts of life at once.
 
-Currently, two official plugins are available:
+Instead of focusing only on completed or incomplete tasks, Catch lets users track progress, organize notes by category and use AI to break larger tasks into smaller next steps.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Create, edit and delete notes
+- Search notes
+- Filter notes by category
+- Track task progress
+- Dynamic note detail pages
+- Dark and light theme
+- LocalStorage persistence
+- AI-generated next steps with Gemini API
+- Loading and error handling
+- Responsive design
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Tech Stack
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+- React
+- JavaScript
+- React Router
+- CSS
+- LocalStorage
+- Gemini API
+- Vercel Functions
 
-## Expanding the ESLint configuration
+## Run locally
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Install dependencies:
+npx vercel dev
