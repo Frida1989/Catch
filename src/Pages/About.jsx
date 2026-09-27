@@ -24,9 +24,12 @@ function About() {
       ======================================== */}
 
       <div className="about-top">
-        <Link to="/" className="brand">
-          <span className="brand-progress">◔</span>
-          <span className="brand-name">Catch</span>
+        <Link to="/" className="catch-logo">
+          <span className="catch-logo-ring" aria-hidden="true">
+            <span className="catch-logo-ring-center"></span>
+          </span>
+
+          <span className="catch-logo-text">Catch</span>
         </Link>
 
         <Link to="/" className="about-back-link">
@@ -65,7 +68,7 @@ function About() {
             <p className="video-small-text">Catch story</p>
 
             <h3>
-              Your future story video
+              My Catch story video
               <br />
               will live here.
             </h3>

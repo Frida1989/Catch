@@ -301,17 +301,11 @@
 
   margin: 0 0 32px;
 
-  color: var(--text-main);
-
   font-size: clamp(3.5rem, 8vw, 7.5rem);
   font-weight: 600;
 
   line-height: 0.95;
   letter-spacing: -0.055em;
-}
-
-.hero-title-highlight {
-  color: var(--text-main);
 }
 
 .hero-subtitle {
@@ -2605,4 +2599,253 @@
 
     border-radius: 24px 24px 16px 16px;
   }
+}
+/* ========================================
+   HERO CURSOR REVEAL
+======================================== */
+
+.hero-title-reveal {
+  position: relative;
+
+  width: fit-content;
+  max-width: 1000px;
+
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Normal dark / muted title */
+.hero-title-base {
+  color: #4b4b4b;
+}
+
+/* Bright copy */
+.hero-title-light {
+  position: absolute;
+
+  inset: 0;
+
+  color: #ffffff;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  mask-image: radial-gradient(
+    circle 150px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    black 25%,
+    transparent 75%
+  );
+
+  -webkit-mask-image: radial-gradient(
+    circle 150px at var(--mouse-x) var(--mouse-y),
+    black 0%,
+    black 25%,
+    transparent 75%
+  );
+
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.12),
+    0 0 45px rgba(255, 255, 255, 0.06);
+
+  transition: opacity 0.25s ease;
+}
+
+/* Only show reveal when mouse is on title */
+.hero-title-reveal:hover .hero-title-light {
+  opacity: 1;
+}
+.page-shell[data-theme="light"] .hero-title-base {
+  color: #a4a9b0;
+}
+
+.page-shell[data-theme="light"] .hero-title-light {
+  color: #181818;
+
+  text-shadow:
+    0 0 18px rgba(24, 24, 24, 0.1),
+    0 0 35px rgba(24, 24, 24, 0.05);
+}
+/* ========================================
+   CATCH LOGO
+======================================== */
+
+.catch-logo {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 11px;
+
+  color: var(--text-main);
+
+  text-decoration: none;
+}
+
+/* Progress ring */
+.catch-logo-ring {
+  position: relative;
+
+  width: 28px;
+  height: 28px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: conic-gradient(
+    var(--text-main) 0deg 250deg,
+    var(--border) 250deg 360deg
+  );
+
+  transform: rotate(-35deg);
+
+  transition: transform 0.45s ease;
+}
+
+/* Empty middle */
+.catch-logo-ring-center {
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  background: var(--page-bg);
+}
+
+/* Small progress point */
+.catch-logo-ring::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  top: 1px;
+  left: 11px;
+
+  border-radius: 50%;
+
+  background: var(--text-main);
+
+  box-shadow: 0 0 0 3px var(--page-bg);
+}
+
+/* Catch text */
+.catch-logo-text {
+  font-size: 1rem;
+  font-weight: 600;
+
+  letter-spacing: -0.03em;
+}
+
+/* Tiny interaction */
+.catch-logo:hover .catch-logo-ring {
+  transform: rotate(15deg);
+}
+/* ========================================
+   AI ASSIST
+======================================== */
+
+.ai-section {
+  margin: 48px 0;
+
+  padding: 36px;
+
+  border: 1px solid var(--border);
+  border-radius: 26px;
+
+  background: var(--surface);
+}
+
+.ai-title {
+  margin: 10px 0 12px;
+
+  color: var(--text-main);
+
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 500;
+
+  letter-spacing: -0.03em;
+}
+
+.ai-description {
+  max-width: 540px;
+
+  margin: 0 0 28px;
+
+  color: var(--text-muted);
+
+  line-height: 1.6;
+}
+
+.ai-button {
+  min-height: 46px;
+
+  padding: 11px 18px;
+
+  border: 1px solid var(--text-main);
+  border-radius: 999px;
+
+  background: var(--text-main);
+  color: var(--page-bg);
+
+  font-weight: 500;
+}
+
+.ai-button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.ai-error {
+  margin-top: 20px;
+
+  color: #ff5a5a;
+
+  font-size: 0.9rem;
+}
+
+.ai-steps {
+  margin: 32px 0 0;
+  padding: 0;
+
+  list-style: none;
+
+  display: grid;
+
+  gap: 12px;
+}
+
+.ai-steps li {
+  padding: 18px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 16px;
+
+  border: 1px solid var(--border);
+  border-radius: 16px;
+
+  background: var(--surface-soft);
+}
+
+.ai-steps li span {
+  color: var(--text-soft);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.ai-steps li p {
+  margin: 0;
+
+  color: var(--text-main);
+
+  line-height: 1.5;
 }

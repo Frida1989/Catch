@@ -26,9 +26,12 @@ function Home({ notes, addNote }) {
     <div className="home-page">
       <section className="hero-section">
         <div className="hero-top">
-          <Link to="/" className="brand">
-            <span className="brand-progress">◔</span>
-            <span className="brand-name">Catch</span>
+          <Link to="/" className="catch-logo">
+            <span className="catch-logo-ring" aria-hidden="true">
+              <span className="catch-logo-ring-center"></span>
+            </span>
+
+            <span className="catch-logo-text">Catch</span>
           </Link>
 
           <Link to="/about" className="hero-about-link">
@@ -61,10 +64,28 @@ function Home({ notes, addNote }) {
           </div>
           <p className="hero-eyebrow">Your personal progress space</p>
 
-          <h1 className="hero-title">
-            Catch what's on
-            <span className="hero-title-highlight"> your mind.</span>
-          </h1>
+          <div
+            className="hero-title-reveal"
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+
+              const x = e.clientX - rect.left;
+              const y = e.clientY - rect.top;
+
+              e.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+              e.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+            }}
+          >
+            {/* Normal title */}
+            <h1 className="hero-title hero-title-base">
+              Catch what's on your mind.
+            </h1>
+
+            {/* Bright title revealed by cursor */}
+            <h1 className="hero-title hero-title-light" aria-hidden="true">
+              Catch what's on your mind.
+            </h1>
+          </div>
 
           <h2 className="hero-subtitle">
             A place for the things you're still moving forward.

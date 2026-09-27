@@ -14,6 +14,9 @@ function NoteDetails({ notes, deleteNote, editNote }) {
   const [editTargetPeriod, setEditTargetPeriod] = useState("");
   const [editProgress, setEditProgress] = useState(0);
   const [editError, setEditError] = useState("");
+  const [aiSteps, setAiSteps] = useState([]);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState("");
 
   // Find the note from the URL id
   const note = notes.find((note) => note.id === Number(noteId));
@@ -78,6 +81,38 @@ function NoteDetails({ notes, deleteNote, editNote }) {
   function handleCancelEdit() {
     setEditError("");
     setIsEditing(false);
+  }
+  async function handleBreakIntoSteps() {
+    setAiLoading(true);
+    setAiError("");
+    setAiSteps([]);
+
+    try {
+      const response = await fetch("/api/break-down", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          title: note.title,
+          description: note.description,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Could not generate steps");
+      }
+
+      const data = await response.json();
+
+      setAiSteps(data.steps);
+    } catch (error) {
+      setAiError("Could not generate steps. Please try again.");
+    } finally {
+      setAiLoading(false);
+    }
   }
 
   return (
@@ -317,6 +352,38 @@ function NoteDetails({ notes, deleteNote, editNote }) {
                   <p className="timeline-value">{note.targetPeriod}</p>
                 </div>
               </div>
+            </section>
+            <section className="ai-section">
+              <p className="section-eyebrow">AI ASSIST</p>
+
+              <h2 className="ai-title">Make the next step easier.</h2>
+
+              <p className="ai-description">
+                Break this catch into three small, practical next steps.
+              </p>
+
+              <button
+                className="ai-button"
+                type="button"
+                onClick={handleBreakIntoSteps}
+                disabled={aiLoading}
+              >
+                {aiLoading ? "Thinking..." : "✦ Break into steps"}
+              </button>
+
+              {aiError && <p className="ai-error">{aiError}</p>}
+
+              {aiSteps.length > 0 && (
+                <ol className="ai-steps">
+                  {aiSteps.map((step, index) => (
+                    <li key={index}>
+                      <span>{index + 1}</span>
+
+                      <p>{step}</p>
+                    </li>
+                  ))}
+                </ol>
+              )}
             </section>
 
             <div className="note-actions">
