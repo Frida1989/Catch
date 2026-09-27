@@ -3,12 +3,11 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import Notes from "./Data/Notes.js";
-
 import Layout from "./Layouts/Layout.jsx";
 import Home from "./Pages/Home.jsx";
-import About from "./pages/About.jsx";
-import NoteDetails from "./pages/NoteDetails.jsx";
-import NotFound from "./pages/NotFound.jsx";
+import About from "./Pages/About.jsx";
+import NoteDetails from "./Pages/NoteDetails.jsx";
+import NotFound from "./Pages/NotFound.jsx";
 
 function App() {
   const [notes, setNotes] = useState(() => {
