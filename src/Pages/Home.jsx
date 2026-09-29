@@ -164,31 +164,6 @@ function Home({ notes, addNote }) {
           <button
             type="button"
             className={
-              selectedCategory === "YouTube"
-                ? "category-button active"
-                : "category-button"
-            }
-            onClick={() => setSelectedCategory("YouTube")}
-            aria-pressed={selectedCategory === "YouTube"}
-          >
-            YouTube
-          </button>
-
-          <button
-            type="button"
-            className={
-              selectedCategory === "Spotify"
-                ? "category-button active"
-                : "category-button"
-            }
-            onClick={() => setSelectedCategory("Spotify")}
-          >
-            Spotify
-          </button>
-
-          <button
-            type="button"
-            className={
               selectedCategory === "Private"
                 ? "category-button active"
                 : "category-button"
@@ -210,19 +185,6 @@ function Home({ notes, addNote }) {
             aria-pressed={selectedCategory === "Growth"}
           >
             Growth
-          </button>
-
-          <button
-            type="button"
-            className={
-              selectedCategory === "Language"
-                ? "category-button active"
-                : "category-button"
-            }
-            onClick={() => setSelectedCategory("Language")}
-            aria-pressed={selectedCategory === "Language"}
-          >
-            Language
           </button>
 
           <button

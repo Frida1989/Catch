@@ -42,8 +42,8 @@ const catchStructure = [
   },
 
   {
-    id: "youtube",
-    name: "YouTube",
+    id: "private",
+    name: "Private",
     groups: [
       {
         id: "book-summaries",
@@ -61,8 +61,8 @@ const catchStructure = [
   },
 
   {
-    id: "spotify",
-    name: "Spotify",
+    id: "private",
+    name: "Private",
     groups: [
       {
         id: "book-reading",
@@ -118,8 +118,8 @@ const catchStructure = [
   },
 
   {
-    id: "language",
-    name: "Language",
+    id: "private",
+    name: "Private",
     groups: [
       {
         id: "vocabulary",

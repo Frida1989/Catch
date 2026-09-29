@@ -191,30 +191,6 @@ function NoteDetails({ notes, deleteNote, editNote }) {
 
                 <button
                   className={
-                    editCategory === "YouTube"
-                      ? "category-button active"
-                      : "category-button"
-                  }
-                  type="button"
-                  onClick={() => setEditCategory("YouTube")}
-                >
-                  YouTube
-                </button>
-
-                <button
-                  className={
-                    editCategory === "Spotify"
-                      ? "category-button active"
-                      : "category-button"
-                  }
-                  type="button"
-                  onClick={() => setEditCategory("Spotify")}
-                >
-                  Spotify
-                </button>
-
-                <button
-                  className={
                     editCategory === "Private"
                       ? "category-button active"
                       : "category-button"
@@ -235,18 +211,6 @@ function NoteDetails({ notes, deleteNote, editNote }) {
                   onClick={() => setEditCategory("Growth")}
                 >
                   Growth
-                </button>
-
-                <button
-                  className={
-                    editCategory === "Language"
-                      ? "category-button active"
-                      : "category-button"
-                  }
-                  type="button"
-                  onClick={() => setEditCategory("Language")}
-                >
-                  Language
                 </button>
 
                 <button
@@ -272,12 +236,21 @@ function NoteDetails({ notes, deleteNote, editNote }) {
                 onChange={(e) => setEditTargetPeriod(e.target.value)}
               >
                 <option value="">Choose target</option>
+                <option value="Today">Today</option>
                 <option value="This week">This week</option>
                 <option value="This month">This month</option>
                 <option value="September">September</option>
                 <option value="October">October</option>
                 <option value="November">November</option>
-                <option value="This autumn">This autumn</option>
+                <option value="December">December</option>
+                <option value="January">January</option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
                 <option value="Someday">Someday</option>
               </select>
             </div>

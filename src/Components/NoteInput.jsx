@@ -94,29 +94,22 @@ function NoteInput({ addNote, closeForm }) {
             <p className="form-label">Where does it belong?</p>
 
             <div className="category-options">
-              {[
-                "Study",
-                "Work",
-                "YouTube",
-                "Spotify",
-                "Private",
-                "Growth",
-                "Language",
-                "Free Notes",
-              ].map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  className={
-                    category === item
-                      ? "category-button active"
-                      : "category-button"
-                  }
-                  onClick={() => setCategory(item)}
-                >
-                  {item}
-                </button>
-              ))}
+              {["Study", "Work", "Private", "Growth", "Free Notes"].map(
+                (item) => (
+                  <button
+                    key={item}
+                    type="button"
+                    className={
+                      category === item
+                        ? "category-button active"
+                        : "category-button"
+                    }
+                    onClick={() => setCategory(item)}
+                  >
+                    {item}
+                  </button>
+                ),
+              )}
             </div>
           </div>
 
@@ -132,12 +125,21 @@ function NoteInput({ addNote, closeForm }) {
               onChange={(e) => setTargetPeriod(e.target.value)}
             >
               <option value="">Choose target</option>
+              <option value="This week">Today</option>
               <option value="This week">This week</option>
               <option value="This month">This month</option>
               <option value="September">September</option>
               <option value="October">October</option>
               <option value="November">November</option>
-              <option value="This autumn">This autumn</option>
+              <option value="This autumn">December</option>
+              <option value="This autumn">January</option>
+              <option value="This autumn">February</option>
+              <option value="This autumn">March</option>
+              <option value="This autumn">April</option>
+              <option value="This autumn">May</option>
+              <option value="This autumn">June</option>
+              <option value="This autumn">July</option>
+              <option value="This autumn">August</option>
               <option value="Someday">Someday</option>
             </select>
           </div>
