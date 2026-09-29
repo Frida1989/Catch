@@ -125,21 +125,21 @@ function NoteInput({ addNote, closeForm }) {
               onChange={(e) => setTargetPeriod(e.target.value)}
             >
               <option value="">Choose target</option>
-              <option value="This week">Today</option>
+              <option value="Today">Today</option>
               <option value="This week">This week</option>
               <option value="This month">This month</option>
               <option value="September">September</option>
               <option value="October">October</option>
               <option value="November">November</option>
-              <option value="This autumn">December</option>
-              <option value="This autumn">January</option>
-              <option value="This autumn">February</option>
-              <option value="This autumn">March</option>
-              <option value="This autumn">April</option>
-              <option value="This autumn">May</option>
-              <option value="This autumn">June</option>
-              <option value="This autumn">July</option>
-              <option value="This autumn">August</option>
+              <option value="December">December</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
               <option value="Someday">Someday</option>
             </select>
           </div>
